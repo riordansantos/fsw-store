@@ -1,9 +1,8 @@
 import { ProductWithTotalPrice } from "@/helpers/products";
-import { Product } from "@prisma/client";
 import Image from "next/image";
 import { Badge } from "./ui/badge";
-import { ArrowDown } from "lucide-react";
 import Link from "next/link";
+import DiscountBadge from "./discount-badge";
 
 interface ProductItemProps {
   product: ProductWithTotalPrice;
@@ -24,9 +23,9 @@ const ProductItem = ({ product }: ProductItemProps) => {
             style={{ objectFit: "contain" }}
           />
           {product.discountPercentage > 0 && (
-            <Badge className="absolute left-2 top-2 px-2 py-[2px]">
-              <ArrowDown size={14} /> {product.discountPercentage}%
-            </Badge>
+            <DiscountBadge className="absolute left-3 top-3">
+              {product.discountPercentage}
+            </DiscountBadge>
           )}
         </div>
 
